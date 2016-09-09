@@ -1,23 +1,53 @@
 <md-toolbar layout="row" color="primary">
   <div *ngIf="isOffice">
-    <button flex (click)="SyncData($event)" md-mini-fab>
-      <md-icon class="md-24">Table</md-icon>
-    </button>
-    <button style="margin-left:10px" flex (click)="drawChart($event)" md-mini-fab>
-      <md-icon class="md-24">Graph</md-icon>
-    </button>
-    <button style="margin-left:10px" flex (click)="refresh($event)" md-mini-fab>
-      <md-icon class="md-24">Refresh</md-icon>
-    </button>
-     <button style="margin-left:10px" flex (click)="deleteAllBinding($event)" md-mini-fab>
-      <md-icon class="md-24">Delete All Binding</md-icon>
-    </button>
+    Binding Demo to add 20,000 cells
+
   </div>
   <div *ngIf="!isOffice">
-    <a ng-if="!vm.insideOffice" href="https://oi888-my.sharepoint.com/personal/jay_officeintegrator_com/_layouts/15/guestaccess.aspx?guestaccesstoken=bVoC%2bJdOxTsUUa5fzH9XVjc9OavcO48Np%2foL9Ad9Azg%3d&docid=2_17e1be0ca76454fa19a9081002cbff6ae&rev=1" >open in excel</a>
+    <a ng-if="!vm.insideOffice" href="https://oi888-my.sharepoint.com/personal/jay_officeintegrator_com/_layouts/15/guestaccess.aspx?guestaccesstoken=bVoC%2bJdOxTsUUa5fzH9XVjc9OavcO48Np%2foL9Ad9Azg%3d&docid=2_17e1be0ca76454fa19a9081002cbff6ae&rev=1">open in excel</a>
   </div>
 </md-toolbar>
+<!--<button flex (click)="SyncData($event)" md-mini-fab>
+      <md-icon class="md-24">Table</md-icon>
+    </button>
+<button style="margin-left:10px" flex (click)="drawChart($event)" md-mini-fab>
+      <md-icon class="md-24">Graph</md-icon>
+    </button>-->
+<md-card-content>
+  <small>
+   
+     Don't exceed 20,000 cells limit per binding.
+     for example 200 rows and 100 columns.
+     Enter rows and columns  then reset demo
+      and then click on add table.
+      Table starts at B14.
+      WOrk in edit mode to save data to workbook
+      </small>
+  <form>
 
+
+    <table style="width: 100%" cellspacing="0">
+      <tr>
+        <td>
+          <md-input name="rowId" placeholder="rows" [(ngModel)]="rows" ></md-input>
+        </td>
+        <td>
+          <md-input name="columnId" placeholder="columns" [(ngModel)]="columns" ></md-input>
+        </td>
+      </tr>
+    </table>
+
+
+  </form>
+</md-card-content>
+
+<button style="margin-left:10px" flex (click)="refresh($event)">
+      <md-icon class="md-24">Reset Demo</md-icon>
+    </button>
+<button style="margin-left:10px" flex (click)="deleteAllBinding($event)">
+      <md-icon class="md-24">add table</md-icon>
+    </button>
+<!--
 <div class="demo">
   <md-list dense>
     <h3 md-subheader>Portfolio</h3>
@@ -62,4 +92,4 @@
         <md-icon class="md-24">Submit</md-icon>
     </button>
   </md-card-content>
-</md-card>
+</md-card>-->
