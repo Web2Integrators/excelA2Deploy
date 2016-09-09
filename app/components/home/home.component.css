@@ -1,0 +1,23 @@
+.demo {
+  display: flex;
+  flex-flow: row wrap; }
+  .demo md-list, .demo md-nav-list {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    width: 350px;
+    margin: 20px 20px 0 0; }
+  .demo h2 {
+    margin-top: 20px; }
+  .demo .active {
+    background-color: yellowgreen; }
+  .demo md-icon {
+    color: rgba(0, 0, 0, 0.12); }
+  .demo [md-list-icon] {
+    color: white;
+    background: rgba(0, 0, 0, 0.3); }
+
+.order_form {
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  width: 295px;
+  margin-top: 10px; }
+  .order_form h5 {
+    margin-top: 0px; }

@@ -1,0 +1,65 @@
+<md-toolbar layout="row" color="primary">
+  <div *ngIf="isOffice">
+    <button flex (click)="SyncData($event)" md-mini-fab>
+      <md-icon class="md-24">Table</md-icon>
+    </button>
+    <button style="margin-left:10px" flex (click)="drawChart($event)" md-mini-fab>
+      <md-icon class="md-24">Graph</md-icon>
+    </button>
+    <button style="margin-left:10px" flex (click)="refresh($event)" md-mini-fab>
+      <md-icon class="md-24">Refresh</md-icon>
+    </button>
+     <button style="margin-left:10px" flex (click)="deleteAllBinding($event)" md-mini-fab>
+      <md-icon class="md-24">Delete All Binding</md-icon>
+    </button>
+  </div>
+  <div *ngIf="!isOffice">
+    <a ng-if="!vm.insideOffice" href="https://oi888-my.sharepoint.com/personal/jay_officeintegrator_com/_layouts/15/guestaccess.aspx?guestaccesstoken=bVoC%2bJdOxTsUUa5fzH9XVjc9OavcO48Np%2foL9Ad9Azg%3d&docid=2_17e1be0ca76454fa19a9081002cbff6ae&rev=1" >open in excel</a>
+  </div>
+</md-toolbar>
+
+<div class="demo">
+  <md-list dense>
+    <h3 md-subheader>Portfolio</h3>
+    <md-list-item *ngFor="let quote of quotes">
+      <div flex>
+        <h4 [ngClass]="{active: quote.Symbol == orderDataForm.symbol }" md-line>{{quote.Symbol}}</h4>
+      </div>
+      <div [ngClass]="{active: quote.Symbol == orderDataForm.symbol }" flex>{{quote.Ask}}</div>
+      <div [ngClass]="{active: quote.Symbol == orderDataForm.symbol }" flex>{{quote.SV}}</div>
+      <div [ngClass]="{active: quote.Symbol == orderDataForm.symbol }" flex>{{quote.Quantity}}</div>
+      <div [ngClass]="{active: quote.Symbol == orderDataForm.symbol }" flex>{{quote.volume}}</div>
+    </md-list-item>
+    <md-divider></md-divider>
+  </md-list>
+</div>
+
+<div class="bindings">
+  <md-list dense>
+    <h3 md-subheader>All Bindings</h3>
+    <md-list-item *ngFor="let binding of allBindings">
+      <div  flex>{{binding.id}}</div>
+      <div  flex>{{binding.type}}</div>
+    </md-list-item>
+    <md-divider></md-divider>
+  </md-list>
+</div>
+
+
+<md-card class="order_form">
+  <md-card-title>
+    <h5>Order Entry Form</h5>
+  </md-card-title>
+  <md-card-content>
+    <div layout=column>
+      <div layout=row>
+        <label><strong>Symbol</strong></label>&nbsp;:&nbsp;
+        <label>{{orderDataForm.symbol}}</label>
+      </div>
+      <md-input style="width:200px" [(ngModel)]="orderDataForm.quantity" type="text" placeholder="Quantity"></md-input>
+    </div>
+    <button (click)="submit($event)" md-icon-button color="accent">
+        <md-icon class="md-24">Submit</md-icon>
+    </button>
+  </md-card-content>
+</md-card>
